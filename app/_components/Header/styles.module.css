@@ -1,0 +1,83 @@
+.header {
+  @apply bg-blue-600 text-white;
+  @apply sticky top-0 left-0 w-full z-50;
+}
+
+.container {
+  @apply flex justify-between items-center p-4 max-w-6xl mx-auto;
+}
+
+.logo {
+  @apply text-lg font-bold;
+}
+
+.menuToggle {
+  @apply p-2;
+  @apply lg:hidden; /* Hide the toggle button on large screens */
+  @apply cursor-pointer;
+}
+
+.icon,
+.iconOpen {
+  @apply block;
+  @apply w-6 h-px bg-white;
+  @apply transition-transform duration-300;
+}
+
+.icon::before,
+.icon::after {
+  @apply absolute bg-white;
+  @apply w-6 h-px;
+  @apply transition-all duration-300;
+  content: "";
+}
+
+.icon::before {
+  @apply -translate-y-2;
+}
+.icon::after {
+  @apply translate-y-2;
+}
+
+.iconOpen {
+  @apply rotate-45;
+}
+
+.iconOpen::after {
+  @apply rotate-90 translate-x-0 translate-y-0;
+}
+
+.iconOpen::before {
+  @apply opacity-0;
+}
+
+.navList {
+  @apply hidden;
+  @apply lg:flex lg:items-center lg:space-x-4; /* Add space between items on large screens */
+  @apply absolute lg:static top-full left-0 w-full lg:w-auto;
+  @apply bg-blue-600 lg:bg-transparent;
+  @apply transform transition-transform duration-500 ease-out;
+  @apply lg:translate-y-0;
+}
+
+.navList.show {
+  @apply flex flex-col lg:flex-row;
+  @apply translate-y-0;
+}
+
+.navItem {
+  @apply border-b border-blue-500 lg:border-none;
+}
+
+.navLink {
+  @apply block py-2 px-4 lg:py-0 lg:px-2;
+  @apply text-white hover:text-blue-300;
+  @apply transition-colors duration-300;
+}
+
+/* Ensures the menu toggle is only shown on smaller screens */
+@media (min-width: 1024px) {
+  .menuToggle {
+    @apply hidden;
+  }
+}
