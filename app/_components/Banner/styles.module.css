@@ -20,6 +20,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url("/images/home_hero_bg.jpg"); /* Replace with your overlay image path */
+  /* background-image: "/images/home_hero_bg.jpg"; Replace with your overlay image path */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
 }
 
 .content {
