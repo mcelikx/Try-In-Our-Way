@@ -10,7 +10,7 @@ const NewLocalRestaurants: React.FC = () => {
       reviewCount: 976,
       imageUrl:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK8lFlcdU_Jg-cjm6pUw70kLj77sRi3eN53w&usqp=CAU",
-      url: "https://www.anatoliarestaurantsg.com",
+      url: "anatolia-restaurant-sg",
     },
     {
       name: "Cappadocia Restaurant",
@@ -20,7 +20,7 @@ const NewLocalRestaurants: React.FC = () => {
       reviewCount: 4567,
       imageUrl:
         "https://static.wixstatic.com/media/186b8a_115c783a4cbe468eb0e3c1798c82280bf000.jpg/v1/fill/w_912,h_1068,al_c,q_85,usm_0.33_1.00_0.00,enc_auto/186b8a_115c783a4cbe468eb0e3c1798c82280bf000.jpg",
-      url: "https://www.cappasg.net",
+      url: "cappadocia-restaurant-sg",
     },
   ];
 

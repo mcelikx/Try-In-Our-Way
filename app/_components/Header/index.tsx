@@ -69,7 +69,7 @@ export default function Example() {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <Image
               className="h-8 w-auto"
@@ -78,7 +78,7 @@ export default function Example() {
               width={32}
               height={32}
             />
-          </a>
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -155,19 +155,19 @@ export default function Example() {
           </Popover> */}
 
           <Link
-            href="#"
+            href="/restaurants"
             className="text-sm font-semibold leading-6 text-gray-900"
           >
             Restaurants
           </Link>
           <Link
-            href="#"
+            href="/hotels"
             className="text-sm font-semibold leading-6 text-gray-900"
           >
             Hotels
           </Link>
           <Link
-            href="#"
+            href="/tours"
             className="text-sm font-semibold leading-6 text-gray-900"
           >
             Tours
@@ -188,14 +188,14 @@ export default function Example() {
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
+            <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
               <img
                 className="h-8 w-auto"
                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                 alt=""
               />
-            </a>
+            </Link>
             <button
               type="button"
               className="-m-2.5 rounded-md p-2.5 text-gray-700"
@@ -237,19 +237,19 @@ export default function Example() {
                   )}
                 </Disclosure> */}
                 <Link
-                  href="#"
+                  href="/restaurants"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Restaurants
                 </Link>
                 <Link
-                  href="#"
+                  href="/hotels"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Hotels
                 </Link>
                 <Link
-                  href="#"
+                  href="/tours"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Tours

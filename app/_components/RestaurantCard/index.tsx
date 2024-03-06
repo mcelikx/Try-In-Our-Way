@@ -16,7 +16,7 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
   restaurant: { name, location, cuisine, rating, reviewCount, imageUrl, url },
 }) => {
   return (
-    <Link href={url} className={styles.card}>
+    <Link href={`/restaurants/${url}`} className={styles.card}>
       <img src={imageUrl} alt={name} className={styles.cardImage} />
       <div className={styles.cardBody}>
         <h3 className={styles.cardTitle}>{name}</h3>
