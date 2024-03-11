@@ -7,8 +7,15 @@ const nextConfig = {
         hostname: "tailwindui.com",
         port: "",
       },
+      {
+        protocol: "http",
+        hostname: "*",
+      },
     ],
     dangerouslyAllowSVG: true,
+  },
+  env: {
+    API_URL: process.env.NEXT_PUBLIC_API_URL,
   },
 };
 

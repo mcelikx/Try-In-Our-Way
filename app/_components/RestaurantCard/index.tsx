@@ -1,31 +1,49 @@
 import React from "react";
 import styles from "./style.module.css";
 import Link from "next/link";
+import Image from "next/image";
 type RestaurantCardProps = {
   restaurant?: {
-    name: string;
+    title: string;
     location: string;
     cuisine: string;
     rating: string;
     reviewCount: number;
     imageUrl: string;
+    // images: {data: {url: string}}[];
+    images: any[];
   };
 };
 
 const RestaurantCard: React.FC<RestaurantCardProps> = ({
-  restaurant: { name, location, cuisine, rating, reviewCount, imageUrl, url },
+  restaurant: { title, location, cuisine, rating, reviewCount, url, images },
 }) => {
+  console.log(images);
+  const imageUrl = `${process.env.API_URL}${images?.data[0]?.attributes.url}`;
+  console.log(imageUrl);
   return (
     <Link href={`/restaurants/${url}`} className={styles.card}>
-      <img src={imageUrl} alt={name} className={styles.cardImage} />
+      <Image
+        width={300}
+        height={200}
+        src={imageUrl}
+        alt={title}
+        className={styles.cardImage}
+      />
       <div className={styles.cardBody}>
-        <h3 className={styles.cardTitle}>{name}</h3>
-        <p className={styles.cardLocation}>{location}</p>
-        <p className={styles.cardCuisine}>{cuisine}</p>
-        <div className={styles.cardRating}>
-          <span>{rating}</span>/5
-        </div>
-        <p className={styles.cardReviewCount}>{reviewCount} reviews</p>
+        {title ? <h3 className={styles.cardTitle}>{title}</h3> : null}
+
+        {location ? <p className={styles.cardLocation}>{location}</p> : null}
+        {cuisine ? <p className={styles.cardCuisine}>{cuisine}</p> : null}
+
+        {rating ? (
+          <div className={styles.cardRating}>
+            <span>{rating}</span>/5
+          </div>
+        ) : null}
+        {reviewCount ? (
+          <p className={styles.cardReviewCount}>{reviewCount} reviews</p>
+        ) : null}
       </div>
     </Link>
   );
