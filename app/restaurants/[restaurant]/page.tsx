@@ -1,6 +1,9 @@
 async function getData({ restaurantId }: { restaurantId: string }) {
+  console.log(
+    `${process.env.API_URL}/api/restaurants?filters[url][$eq]=${restaurantId}&populate=*`
+  );
   const res = await fetch(
-    `${process.env.API_URL}/api/restaurants/${restaurantId}/?populate=*`
+    `${process.env.API_URL}/api/restaurants/?filters[url][$eq]=${restaurantId}/?populate=*`
   );
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
@@ -17,7 +20,7 @@ const RestaurantPage = async ({
   params,
 }: {
   params: {
-    restaurant(restaurant: any): unknown;
+    restaurant(restaurant: string): string;
     slug: string;
   };
 }) => {
