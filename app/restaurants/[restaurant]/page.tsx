@@ -35,12 +35,12 @@ const RestaurantPage = async ({
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-4">{restaurant.title}</h1>
-      <div className="flex justify-center mb-4">
+      <div className=" mb-4">
         <Image
           src={restaurantImage}
           alt={restaurant.images.data[0].attributes.caption || ""}
-          width={restaurant.images.data[0].attributes.width}
-          height={restaurant.images.data[0].attributes.height}
+          width={300}
+          height={200}
         />
       </div>
       <div className="mb-4">

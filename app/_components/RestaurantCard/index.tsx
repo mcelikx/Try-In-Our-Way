@@ -1,7 +1,16 @@
 import React from "react";
 import styles from "./style.module.css";
 import Link from "next/link";
-import Image from "next/image";
+
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Image,
+  Button,
+} from "@nextui-org/react";
+
 type RestaurantCardProps = {
   restaurant?: {
     title: string;
@@ -23,28 +32,34 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
   console.log(imageUrl);
   return (
     <Link href={`/restaurants/${url}`} className={styles.card}>
-      <Image
-        width={300}
-        height={200}
-        src={imageUrl}
-        alt={title}
-        className={styles.cardImage}
-      />
-      <div className={styles.cardBody}>
-        {title ? <h3 className={styles.cardTitle}>{title}</h3> : null}
-
-        {location ? <p className={styles.cardLocation}>{location}</p> : null}
-        {cuisine ? <p className={styles.cardCuisine}>{cuisine}</p> : null}
-
-        {rating ? (
-          <div className={styles.cardRating}>
-            <span>{rating}</span>/5
+      <Card
+        isFooterBlurred
+        className="w-full h-[300px] col-span-12 sm:col-span-5"
+      >
+        <Image
+          removeWrapper
+          alt="Card example background"
+          className="z-0 w-full h-full scale-125 -translate-y-6 object-cover"
+          src={imageUrl}
+        />
+        <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
+          <div>
+            <h3 className="text-black font-bold">{title}</h3>
+            <p className="text-black text-tiny">📍{location}</p>
+            <p className="text-black text-tiny">{cuisine}</p>
           </div>
-        ) : null}
-        {reviewCount ? (
-          <p className={styles.cardReviewCount}>{reviewCount} reviews</p>
-        ) : null}
-      </div>
+          {rating ? (
+            <Button
+              className="text-tiny"
+              color="primary"
+              radius="full"
+              size="sm"
+            >
+              {rating} / 5
+            </Button>
+          ) : null}
+        </CardFooter>
+      </Card>
     </Link>
   );
 };
