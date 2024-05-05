@@ -1,6 +1,8 @@
+"use client";
 import Map from "@/app/_components/Map";
 import Image from "next/image";
-
+import { Calendar } from "@nextui-org/calendar";
+import { today, getLocalTimeZone } from "@internationalized/date";
 async function getData({ restaurantId }: { restaurantId: string }) {
   const res = await fetch(
     `${process.env.API_URL}/api/restaurants?filters[url][$eq]=${restaurantId}&populate=*`
@@ -53,6 +55,11 @@ const RestaurantPage = async ({
         </p>
         {/* Diğer bilgiler buraya eklenmeli */}
       </div>
+      <Calendar
+        aria-label="Date (Min Date Value)"
+        defaultValue={today(getLocalTimeZone())}
+        minValue={today(getLocalTimeZone())}
+      />
       <a
         href={restaurant.url}
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"

@@ -158,6 +158,13 @@
   dependencies:
     "@swc/helpers" "^0.5.0"
 
+"@internationalized/date@^3.5.3":
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/@internationalized/date/-/date-3.5.3.tgz#acef6e6f8855a44d685111023aa471f2012643c8"
+  integrity sha512-X9bi8NAEHAjD8yzmPYT2pdJsbe+tYSEBAfowtlxJVJdZR3aK8Vg7ZUT1Fm5M47KLzp/M1p1VwAaeSma3RT7biw==
+  dependencies:
+    "@swc/helpers" "^0.5.0"
+
 "@internationalized/message@^3.1.2":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/@internationalized/message/-/message-3.1.2.tgz#c42fcc5118b6e9c4cd2109695daf1ad126a87375"
