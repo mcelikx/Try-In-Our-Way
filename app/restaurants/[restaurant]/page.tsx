@@ -1,8 +1,6 @@
-"use client";
 import Map from "@/app/_components/Map";
 import Image from "next/image";
-import { Calendar } from "@nextui-org/calendar";
-import { today, getLocalTimeZone } from "@internationalized/date";
+import styles from "./styles.module.css";
 async function getData({ restaurantId }: { restaurantId: string }) {
   const res = await fetch(
     `${process.env.API_URL}/api/restaurants?filters[url][$eq]=${restaurantId}&populate=*`
@@ -35,47 +33,69 @@ const RestaurantPage = async ({
   &q=${restaurant.title},${restaurant.map.address}`;
   // console.log(data);
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-4">{restaurant.title}</h1>
-      <div className=" mb-4">
-        <Image
-          src={restaurantImage}
-          alt={restaurant.images.data[0].attributes.caption || ""}
-          width={300}
-          height={200}
-        />
+    <div className={styles.root}>
+      <div className={styles.restaurantHead}>
+        <h1 className={styles.restaurantTitle}>{restaurant.title}</h1>
+        <div className={styles.restaurantImage}>
+          <Image
+            src={restaurantImage}
+            alt={restaurant.images.data[0].attributes.caption || ""}
+            width={300}
+            height={200}
+          />
+        </div>
+        <div className={styles.restaurantInfo}>
+          <p>
+            <span className={styles.restaurantInfoTitle}>Location:</span>{" "}
+            {restaurant.location}
+          </p>
+          <p>
+            <span className={styles.restaurantInfoTitle}>Cuisine:</span>{" "}
+            {restaurant.cuisine || "Not specified"}
+          </p>
+        </div>
       </div>
-      <div className="mb-4">
-        <p>
-          <span className="font-bold">Location:</span> {restaurant.location}
-        </p>
-        <p>
-          <span className="font-bold">Cuisine:</span>{" "}
-          {restaurant.cuisine || "Not specified"}
-        </p>
-        {/* Diğer bilgiler buraya eklenmeli */}
-      </div>
-      <Calendar
-        aria-label="Date (Min Date Value)"
-        defaultValue={today(getLocalTimeZone())}
-        minValue={today(getLocalTimeZone())}
-      />
-      <a
-        href={restaurant.url}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        Visit Restaurant
-      </a>
-      {/* <Map address={restaurant.map} /> */}
-      <iframe
-        width="100%"
-        height="450"
-        style={{ border: 0 }}
-        loading="lazy"
-        src={mapSrc}
-      ></iframe>
+      <div className={styles.restaurantBody}>Restaurant Body</div>
     </div>
   );
+  // return (
+  //   <div className="container mx-auto px-4 py-8">
+  //     <h1 className="text-3xl font-bold mb-4">{restaurant.title}</h1>
+  //     <div className=" mb-4">
+  //       <Image
+  //         src={restaurantImage}
+  //         alt={restaurant.images.data[0].attributes.caption || ""}
+  //         width={300}
+  //         height={200}
+  //       />
+  //     </div>
+  //     <div className="mb-4">
+  //       <p>
+  //         <span className="font-bold">Location:</span> {restaurant.location}
+  //       </p>
+  //       <p>
+  //         <span className="font-bold">Cuisine:</span>{" "}
+  //         {restaurant.cuisine || "Not specified"}
+  //       </p>
+  //       {/* Diğer bilgiler buraya eklenmeli */}
+  //     </div>
+
+  //     <a
+  //       href={restaurant.url}
+  //       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+  //     >
+  //       Visit Restaurant
+  //     </a>
+  //     {/* <Map address={restaurant.map} /> */}
+  //     <iframe
+  //       width="100%"
+  //       height="450"
+  //       style={{ border: 0 }}
+  //       loading="lazy"
+  //       src={mapSrc}
+  //     ></iframe>
+  //   </div>
+  // );
 };
 
 export default RestaurantPage;
