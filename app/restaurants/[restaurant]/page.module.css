@@ -1,0 +1,36 @@
+.root {
+  @apply flex flex-col gap-2 items-center justify-center;
+}
+
+.restaurantDetailInfo {
+  @apply w-full px-8 py-4;
+}
+
+.titleAndActions {
+  @apply flex justify-between items-center w-full;
+}
+
+.actions {
+  @apply flex h-5 items-center space-x-4 text-small;
+}
+.action {
+  @apply flex items-center gap-2;
+}
+
+.restaurantRating {
+  @apply flex h-5 items-center space-x-4 text-small;
+}
+
+.restaurantInformation {
+  @apply grid grid-cols-3 gap-4;
+}
+.reserveTable {
+  column-span: 1;
+}
+.restaurantImages {
+  @apply col-span-2;
+}
+
+.ratingAndReview {
+  column-span: 1;
+}

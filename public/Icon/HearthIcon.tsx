@@ -1,11 +1,11 @@
 import React from "react";
 export const HeartIcon = ({
   fill = "currentColor",
-  filled,
-  size,
-  height,
-  width,
-  label,
+  filled = false,
+  size = 24,
+  height = 24,
+  width = 24,
+  label = "Heart Icon",
   ...props
 }) => {
   return (
