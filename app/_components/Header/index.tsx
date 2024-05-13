@@ -3,22 +3,14 @@ import React from "react";
 import {
   Navbar,
   NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  Link,
-  Input,
-  DropdownItem,
-  DropdownTrigger,
-  Dropdown,
-  DropdownMenu,
   NavbarMenuToggle,
   NavbarMenuItem,
   NavbarMenu,
-  Avatar,
+  NavbarContent,
+  NavbarItem,
+  Link,
   Button,
 } from "@nextui-org/react";
-
-import { SearchIcon } from "./SearchIcon.tsx";
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);

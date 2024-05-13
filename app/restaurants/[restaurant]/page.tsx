@@ -6,7 +6,9 @@ import Link from "next/link";
 import { Button } from "@nextui-org/react";
 import { HeartIcon } from "@/public/Icon/HearthIcon";
 import Ratings from "@/app/_components/Ratings/Ratings";
+import Card from "@/app/_components/Card/Card";
 
+import ReserveTable from "@/app/_components/ReserveTable/ReserveTable";
 async function getData({ restaurantId }: { restaurantId: string }) {
   const res = await fetch(
     `${process.env.API_URL}/api/restaurants?filters[url][$eq]=${restaurantId}&populate=*`
@@ -76,11 +78,36 @@ const RestaurantPage = async ({
         </div>
       </div>
       <div className={classes.restaurantInformation}>
-        <div className={classes.reserveTable}>Reserve a table</div>
-        <div className={classes.restaurantImages}>Restaurant Images</div>
-        <div className={classes.ratingAndReview}>Ratings and reviews</div>
-        <div className={classes.details}>Details</div>
-        <div className={classes.location}>Location and contact</div>
+        <div className={classes.reserveTable}>
+          <Card>
+            <h1>Reserve a table</h1>
+            <ReserveTable />
+          </Card>
+        </div>
+        <div className={classes.restaurantImages}>
+          {" "}
+          <Card>
+            <h1>Restaurant Images</h1>
+          </Card>
+        </div>
+        <div className={classes.ratingAndReview}>
+          {" "}
+          <Card>
+            <h1>Ratings and Reviews</h1>
+          </Card>
+        </div>
+        <div className={classes.details}>
+          {" "}
+          <Card>
+            <h1>Details</h1>
+          </Card>
+        </div>
+        <div className={classes.location}>
+          {" "}
+          <Card>
+            <h1>Location and contact</h1>
+          </Card>
+        </div>
       </div>
     </div>
   );
