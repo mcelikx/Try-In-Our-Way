@@ -35,11 +35,16 @@ const RestaurantPage = async ({
   const data = await getData({ restaurantId: params.restaurant });
 
   const restaurant = data?.data[0]?.attributes;
+  restaurant?.images?.data?.map((image) => {
+    console.log(image.attributes.url);
+    return image.attributes.url;
+  });
+  console.log(restaurant.images);
   const restaurantImage = `/api${restaurant.images.data[0].attributes.url}`;
-  console.log(restaurantImage);
+
   const mapSrc = `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
   &q=${restaurant.title},${restaurant.map.address}`;
-  console.log(restaurant);
+
   return (
     <div className={classes.root}>
       <div className={classes.restaurantDetailInfo}>
@@ -88,6 +93,14 @@ const RestaurantPage = async ({
           {" "}
           <Card>
             <h1>Restaurant Images</h1>
+            <div>
+              <Image
+                src={restaurantImage}
+                alt={restaurant.images.data[0].attributes.caption || ""}
+                width={300}
+                height={200}
+              />
+            </div>
           </Card>
         </div>
         <div className={classes.ratingAndReview}>
@@ -99,7 +112,30 @@ const RestaurantPage = async ({
         <div className={classes.details}>
           {" "}
           <Card>
-            <h1>Details</h1>
+            <div>
+              <h5>Details</h5>
+              <div className={classes.detailsList}>
+                <ul>
+                  <li>
+                    <strong>Location:</strong> {restaurant.location}
+                  </li>
+                  <li>
+                    <strong>Cuisine:</strong>{" "}
+                    {restaurant.cuisine || "Not specified"}
+                  </li>
+                  <li>
+                    <strong>Phone:</strong> {restaurant.phone}
+                  </li>
+                  <li>
+                    <strong>Website:</strong>{" "}
+                    <Link href={restaurant.url}>{restaurant.url}</Link>
+                  </li>
+                  <li>
+                    <strong>Opening Hours:</strong> {restaurant.openingHours}
+                  </li>
+                </ul>
+              </div>
+            </div>
           </Card>
         </div>
         <div className={classes.location}>
@@ -111,44 +147,6 @@ const RestaurantPage = async ({
       </div>
     </div>
   );
-  // return (
-  //   <div className="container mx-auto px-4 py-8">
-  //     <h1 className="text-3xl font-bold mb-4">{restaurant.title}</h1>
-  //     <div className=" mb-4">
-  //       <Image
-  //         src={restaurantImage}
-  //         alt={restaurant.images.data[0].attributes.caption || ""}
-  //         width={300}
-  //         height={200}
-  //       />
-  //     </div>
-  //     <div className="mb-4">
-  //       <p>
-  //         <span className="font-bold">Location:</span> {restaurant.location}
-  //       </p>
-  //       <p>
-  //         <span className="font-bold">Cuisine:</span>{" "}
-  //         {restaurant.cuisine || "Not specified"}
-  //       </p>
-  //       {/* Diğer bilgiler buraya eklenmeli */}
-  //     </div>
-
-  //     <a
-  //       href={restaurant.url}
-  //       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-  //     >
-  //       Visit Restaurant
-  //     </a>
-  //     {/* <Map address={restaurant.map} /> */}
-  //     <iframe
-  //       width="100%"
-  //       height="450"
-  //       style={{ border: 0 }}
-  //       loading="lazy"
-  //       src={mapSrc}
-  //     ></iframe>
-  //   </div>
-  // );
 };
 
 export default RestaurantPage;
